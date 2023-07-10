@@ -31,7 +31,7 @@ export const manageSchemaRouter = createTRPCRouter({
     )
     .query(async () => {
       const read = promisify(readFile);
-      const path = `${process.cwd()}/project-schema.prisma`;
+      const path = `${process.cwd()}/temp.prisma`;
       const file = await read(path);
       const schema = {
         schema: file.toString(),
@@ -68,7 +68,7 @@ export const manageSchemaRouter = createTRPCRouter({
     )
     .mutation(async ({ input }) => {
       const write = promisify(writeFile);
-      const path = `${process.cwd()}/project-schema.prisma`;
+      const path = `${process.cwd()}/temp.prisma`;
 
       await write(path, input.schema);
 
