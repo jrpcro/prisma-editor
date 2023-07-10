@@ -5,11 +5,10 @@ import {
 import { TRPCClientError } from "@trpc/client";
 import { Configuration, OpenAIApi } from "openai";
 import { z } from "zod";
-import { env } from "~/env.mjs";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 const configuration = new Configuration({
-  apiKey: env.OPEN_AI_API_KEY,
+  apiKey: '',
 });
 const openai = new OpenAIApi(configuration);
 const firstLines = `
