@@ -79,12 +79,12 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: '',
+  secret: 'secret',
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
-      clientId: '',
-      clientSecret: '',
+      clientId: '1',
+      clientSecret: 'secret',
     }),
   ],
 };
