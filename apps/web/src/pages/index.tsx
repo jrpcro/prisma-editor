@@ -1,16 +1,17 @@
 import Layout from "~/components/layout";
-import { Preview } from "~/components/main-page/components/preview";
-import { Features } from "~/components/main-page/features";
-import Footer from "~/components/main-page/footer";
-import Hero from "~/components/main-page/hero";
+import {useRouter} from "next/navigation";
+import {useEffect} from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+      router.replace('/schema/1');
+  }, [router]);
+
   return (
     <Layout>
-      <Hero />
-      <Preview />
-      <Features />
-      <Footer />
+      <div />
     </Layout>
   );
 }

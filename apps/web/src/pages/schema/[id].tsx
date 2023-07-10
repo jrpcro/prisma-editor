@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -46,16 +46,9 @@ const Schema = () => {
 
   const { status } = useSession();
 
-  useEffect(() => {
-    if (status === "unauthenticated" && isNotPlayground) {
-      void signIn("github", { callbackUrl: router.asPath });
-    }
-  }, [isNotPlayground, router.asPath, status]);
-
   if (
     !isPlayground &&
     (status === "loading" ||
-      status === "unauthenticated" ||
       !isRestoreSchemaDone)
   ) {
     return (
@@ -66,7 +59,7 @@ const Schema = () => {
   }
 
   return (
-    <Layout showPromptButton className="h-screen">
+    <Layout className="h-screen">
       <Head>
         <title>Edit Schema | Prisma Editor</title>
       </Head>
