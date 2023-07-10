@@ -2,8 +2,7 @@ import { type Permission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { string, z } from "zod";
 import {createTRPCRouter, protectedProcedure, publicProcedure} from "~/server/api/trpc";
-import { readFile, writeFile } from "fs";
-import { promisify } from "util";
+import { readFileSync, writeFileSync } from "fs";
 
 export const manageSchemaRouter = createTRPCRouter({
   createSchema: protectedProcedure
@@ -29,10 +28,9 @@ export const manageSchemaRouter = createTRPCRouter({
         token: z.string().optional(),
       })
     )
-    .query(async () => {
-      const read = promisify(readFile);
-      const path = `${process.cwd()}/temp.prisma`;
-      const file = await read(path);
+    .query(() => {
+      const path = `${process.cwd()}/editing.prisma`;
+      const file = readFileSync(path);
       const schema = {
         schema: file.toString(),
         userId: 1,
@@ -66,11 +64,10 @@ export const manageSchemaRouter = createTRPCRouter({
         schema: string(),
       })
     )
-    .mutation(async ({ input }) => {
-      const write = promisify(writeFile);
-      const path = `${process.cwd()}/temp.prisma`;
+    .mutation(({ input }) => {
+      const path = `${process.cwd()}/editing.prisma`;
 
-      await write(path, input.schema);
+      writeFileSync(path, input.schema);
 
       return true;
     }),

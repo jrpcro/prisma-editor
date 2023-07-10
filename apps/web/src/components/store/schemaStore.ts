@@ -442,6 +442,8 @@ const createSchema = (schemaId: string | number) =>
           const newSchema = schema || state().schema || emptySchema;
           await state().parseSchema(newSchema, false);
 
+          state().setSchema(newSchema);
+
           set((state) => ({
             ...state,
             isRestoreSavedSchemaLoading: false,
