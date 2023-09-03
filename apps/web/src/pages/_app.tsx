@@ -15,7 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   const title = "Prisma Editor | Visualize and Edit Prisma Schemas";
   const description =
     "Prisma Editor: Prisma Schema Editor, Prisma Schema visualization, visualize and edit Prisma schemas.";
-  const url = "https://prisma-editor.up.railway.app";
+  const url = "https://prisma-editor.vercel.app";
   return (
     <>
       <DefaultSeo
@@ -45,6 +45,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <meta
           name="google-site-verification"
           content="8U9A6jsEwr0vCbYVqJC33MwLSq7YNbk5uRIz8EJdKjs"
+        />
+        <meta
+          name="google-site-verification"
+          content="JASFKuP84nQMaTJje9zpZ6EVmipJnzcQv37h8t1Kuv4"
         />
         <meta name="msvalidate.01" content="548C832C1081145B2047BAB9C7452E7F" />
       </Head>
