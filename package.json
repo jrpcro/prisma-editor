@@ -14,7 +14,8 @@
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "web": "pnpm --filter @prisma-editor/web",
-    "dmmf": "pnpm --filter @prisma-editor/prisma-dmmf-extended"
+    "dmmf": "pnpm --filter @prisma-editor/prisma-dmmf-extended",
+    "docker:push": "docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag juniorjmm/prisma-editor-local:latest ."
   },
   "devDependencies": {
     "@types/node": "^18.17.11",
